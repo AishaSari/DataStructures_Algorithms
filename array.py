@@ -1,6 +1,6 @@
 import kivy
 import array
-import math as mt
+
 
 arr = [2, 5, 3, 4, 1, 7, 6, 9, 10, 8]
 print("Array =", arr)
@@ -124,3 +124,18 @@ if user_input == '7':
 
 # bubble sort
 if user_input == '8':
+    def bubble_sort(arr):
+        n = len(arr)
+
+        for i in range(n):
+            swapped = False
+
+            for j in range(0, n-i-1):
+                if arr[j] > arr[j+1]:
+                    arr[j], arr[j+1] = arr[j+1], arr[j]
+                    swapped = True
+            if not swapped:
+                    break
+
+    bubble_sort(arr)
+    print("Sorted Array =", arr)
