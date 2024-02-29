@@ -6,7 +6,7 @@ arr = [2, 5, 3, 4, 1, 7, 6, 9, 10, 8]
 print("Array =", arr)
 
 # User chooses which feature for Array
-options_arr = ['Append', 'Insert', 'Pop', 'Remove', 'Linear Search', 'Binary Search', 'Ternary Search', 'Bubble Sort']
+options_arr = ['Append', 'Insert', 'Pop', 'Remove', 'Linear Search', 'Binary Search', 'Ternary Search', 'Bubble Sort', 'Insertion Sort', 'Selection Sort', 'Merge Sort']
 user_input = ''
 input_message = "Choose an option:\n"
 
@@ -125,12 +125,12 @@ if user_input == '7':
 # bubble sort
 if user_input == '8':
     def bubble_sort(arr):
-        n = len(arr)
+        size = len(arr)
 
-        for i in range(n):
+        for i in range(size):
             swapped = False
 
-            for j in range(0, n-i-1):
+            for j in range(0, size-i-1):
                 if arr[j] > arr[j+1]:
                     arr[j], arr[j+1] = arr[j+1], arr[j]
                     swapped = True
@@ -139,3 +139,74 @@ if user_input == '8':
 
     bubble_sort(arr)
     print("Sorted Array =", arr)
+
+# insertion sort
+if user_input == '9':
+    def insertion_sort(arr):
+        size = len(arr)
+
+        for i in range(1, size):
+            key = arr[i]
+            j = i-1
+            while j>= 0 and key < arr[j]:
+                arr[j+1] = arr[j]
+                j -= 1
+            arr[j+1] = key
+
+    insertion_sort(arr)
+    print("Sorted Array =", arr)
+
+# selection sort
+if user_input == '10':
+    def selection_sort(arr):
+        size = len(arr)
+        for ind in range(size):
+            min_index = ind
+
+            for j in range(ind + 1, size):
+               if arr[j] < arr[min_index]:
+                   min_index = j
+
+            (arr[ind], arr[min_index]) = (arr[min_index], arr[ind])
+
+    selection_sort(arr)
+    print("Sorted Array =", arr)
+
+# merge sort
+if user_input == '11':
+    def merge_sort(arr):
+        if len(arr) > 1:
+            mid = len(arr)//2
+
+            L = arr[:mid]
+            R = arr[mid:]
+
+            merge_sort(L)
+            merge_sort(R)
+
+            i = j = k = 0
+
+            while i < len(L) and j < len(R):
+                if L[i] < R[j]:
+                    arr[k] = L[i]
+                    i += 1
+                else:
+                    arr[k] = R[j]
+                    j += 1
+                k += 1
+
+            while i < len(L):
+                arr[k] = L[i]
+                i += 1
+                k += 1
+
+            while j < len(R):
+                arr[k] = R[j]
+                j += 1
+                k += 1
+
+    merge_sort(arr)
+    print("Sorted Array =", arr)
+
+# heap sort
+# radix sort
